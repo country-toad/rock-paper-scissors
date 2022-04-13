@@ -25,15 +25,13 @@
 
       function playerPlay() {
         let input = prompt("What do you want to throw out? (Rock/Paper/Scissors)");
+        input = standardize(input);
+
         switch(input) {
-          case "rock":
-            return "Rock";
-            break;
-          case "paper":
-            return "Paper";
-            break;
-          case "scissors":
-            return "Scissors"; 
+          case "Rock":
+          case "Paper":
+          case "Scissors":
+            return input;
             break;
           default:
             console.log("Received incorrect input.")
@@ -64,9 +62,8 @@
         else {
           return `You lose! ${computerSelection} beats ${playerSelection}`;
         }
-
-
       }
+
     </script>
   
   </body>
