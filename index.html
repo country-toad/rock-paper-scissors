@@ -25,7 +25,6 @@
 
       function playerPlay() {
         let input = prompt("What do you want to throw out? (Rock/Paper/Scissors)");
-        input = input.toLowerCase();
         switch(input) {
           case "rock":
             return "Rock";
@@ -37,12 +36,20 @@
             return "Scissors"; 
             break;
           default:
+            console.log("Received incorrect input.")
             return playerPlay(); // If input does not match up, the switch runs this function again.
         } 
       }
 
+      function standardize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase(); // Capitalize first char, lowercase the rest
+      }
+
       function playRound(playerSelection, computerSelection) {
-        if(playerSelection === computerSelection) { // Tie
+        playerSelection = standardize(playerSelection);
+        computerSelection = standardize(computerSelection);
+
+        if(playerSelection == computerSelection) { 
           return `Tie! You both picked ${playerSelection}`;
         }
         else if (playerSelection == "Rock" && computerSelection == "Scissors") {
