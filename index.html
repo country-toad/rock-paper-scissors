@@ -41,9 +41,6 @@
             return playerPlay(); 
         } 
       }
-      function playerButtonPlay(e) {
-
-      }
 
       function standardize(string) { // Capitalize first char, lowercase the rest
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase(); 
@@ -93,7 +90,11 @@
         }
       }
       const buttons = document.querySelectorAll('button');
-      buttons.forEach(button => button.addEventListener('click', alert('test')));
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          console.log(this);
+        });
+      });
 
     </script>
   
