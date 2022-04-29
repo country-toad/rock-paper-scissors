@@ -7,9 +7,9 @@
     <title>Document</title>
   </head>
   <body>
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
+    <button class="rock">Rock</button>
+    <button class="paper">Paper</button>
+    <button class="scissors">Scissors</button>
     <script>
       function computerPlay() {
         // Generates 0, 1, or 2 randomly
@@ -40,6 +40,9 @@
             console.log("Received incorrect input.")
             return playerPlay(); 
         } 
+      }
+      function playerButtonPlay(e) {
+
       }
 
       function standardize(string) { // Capitalize first char, lowercase the rest
@@ -89,6 +92,8 @@
           return `How sad. You won ${playerScore} rounds and your opponent won ${computerScore} rounds.`; 
         }
       }
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => button.addEventListener('click', playerButtonPlay))
 
     </script>
   
