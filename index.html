@@ -49,6 +49,7 @@
       function playRound(playerSelection, computerSelection) {
         playerSelection = standardize(playerSelection);
         computerSelection = standardize(computerSelection);
+        console.log(playerSelection);
 
         if(playerSelection == computerSelection) { 
           return `Tie! You both picked ${playerSelection}`;
@@ -92,7 +93,7 @@
       const buttons = document.querySelectorAll('button');
       buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-          console.log(this.textContent);
+          playRound(this.textContent, computerPlay());
         });
       });
 
