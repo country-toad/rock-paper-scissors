@@ -93,7 +93,7 @@
       const buttons = document.querySelectorAll('button');
       buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-          playRound(this.textContent, computerPlay());
+          console.log(playRound(this.textContent, computerPlay()));
         });
       });
 
