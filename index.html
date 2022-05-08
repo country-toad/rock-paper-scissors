@@ -11,6 +11,8 @@
     <button class="paper">Paper</button>
     <button class="scissors">Scissors</button>
     <div class="result"></div>
+    <div class="playerScore"></div>
+    <div class="computerScore"></div>
     <script>
       function computerPlay() {
         // Generates 0, 1, or 2 randomly
@@ -50,7 +52,6 @@
       function playRound(playerSelection, computerSelection) {
         playerSelection = standardize(playerSelection);
         computerSelection = standardize(computerSelection);
-        console.log(playerSelection);
 
         if(playerSelection == computerSelection) { 
           return `Tie! You both picked ${playerSelection}`;
@@ -68,39 +69,28 @@
           return `You lose! ${computerSelection} beats ${playerSelection}`;
         }
       }
-      /* Work on refactoring the code to display the score in a div */
-      function game(rounds) {
-        let playerScore = 0;
-        let computerScore = 0;
-
-        for (let i = 0; i < rounds; i++) {
-          currentRound = playRound(playerPlay(), computerPlay());
-          if(currentRound.includes("win")) {
-            playerScore += 1;
-          } 
-          else if (currentRound.includes("lose")) {
-            computerScore += 1;
-          }
-          console.log(currentRound);
-        }
-
-        if(playerScore > computerScore) {
-          return `CONGRATS! You won ${playerScore} rounds and your opponent won ${computerScore} rounds.`;
-        }
-        else {
-          return `How sad. You won ${playerScore} rounds and your opponent won ${computerScore} rounds.`; 
-        }
-      }
 
       function displayRoundResult(string) {
         const result = document.querySelector('.result');
         result.textContent = string;
+        if(string.includes("win")) {
+          const playerScore = document.querySelector('.playerScore');
+          if(!playerScore.textContent) {
+            playerScore.textContent = 1;
+          }
+          playerScore.textContent += 1;
+        }
+        /*else if(string.includes("lose")) {
+          const computerScore = document.querySelector('.computerScore');
+          computerScore += 1;
+        }*/
       }
 
       const buttons = document.querySelectorAll('button');
       buttons.forEach(button => {
         button.addEventListener('click', function(e) {
           displayRoundResult(playRound(this.textContent, computerPlay()));
+          
         });
       });
 
