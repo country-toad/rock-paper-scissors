@@ -69,10 +69,17 @@
             playerScore.textContent = num;
           }
         }
-        /*else if(string.includes("lose")) {
+        else if(string.includes("lose")) {
           const computerScore = document.querySelector('.computerScore');
-          computerScore += 1;
-        }*/
+          if(!computerScore.textContent) {
+            computerScore.textContent = 1;
+          }
+          else {
+            num = parseInt(computerScore.textContent);
+            num += 1;
+            computerScore.textContent = num;
+          }
+        }
       }
 
       const buttons = document.querySelectorAll('button');
