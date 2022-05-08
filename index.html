@@ -30,21 +30,6 @@
         }
       }
 
-      function playerPlay() {
-        let input = prompt("What do you want to throw out? (Rock/Paper/Scissors)");
-        input = standardize(input);
-        switch(input) {
-          case "Rock":
-          case "Paper":
-          case "Scissors":
-            return input;
-            break;
-          default: // Catches non-RPS input
-            console.log("Received incorrect input.")
-            return playerPlay(); 
-        } 
-      }
-
       function standardize(string) { // Capitalize first char, lowercase the rest
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase(); 
       }
@@ -78,7 +63,11 @@
           if(!playerScore.textContent) {
             playerScore.textContent = 1;
           }
-          playerScore.textContent += 1;
+          else {
+            num = parseInt(playerScore.textContent);
+            num += 1;
+            playerScore.textContent = num;
+          }
         }
         /*else if(string.includes("lose")) {
           const computerScore = document.querySelector('.computerScore');
