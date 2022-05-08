@@ -13,6 +13,7 @@
     <div class="result"></div>
     <div class="playerScore">0</div>
     <div class="computerScore">0</div>
+    <div class="winner"></div>
     <script>
       function computerPlay() {
         // Generates 0, 1, or 2 randomly
@@ -57,18 +58,29 @@
 
       function displayRoundResult(string) {
         const result = document.querySelector('.result');
+        const playerScore = document.querySelector('.playerScore');
+        const computerScore = document.querySelector('.computerScore');
         result.textContent = string;
         if(string.includes("win")) {
-          const playerScore = document.querySelector('.playerScore');
           num = parseInt(playerScore.textContent);
           num += 1;
           playerScore.textContent = num;
         }
         else if(string.includes("lose")) {
-          const computerScore = document.querySelector('.computerScore');
           num = parseInt(computerScore.textContent);
           num += 1;
           computerScore.textContent = num;
+        }
+      }
+      function checkWinner() {
+        const winnerResult = document.querySelector('.winner');
+        const playerScore = document.querySelector('.playerScore');
+        const computerScore = document.querySelector('.computerScore');
+        if(playerScore.textContent === '5') {
+          winnerResult.textContent = "Player wins!"
+        }
+        if(computerScore.textContent === '5') {
+          winnerResult.textContent = "Computer wins!"
         }
       }
 
@@ -76,7 +88,7 @@
       buttons.forEach(button => {
         button.addEventListener('click', function(e) {
           displayRoundResult(playRound(this.textContent, computerPlay()));
-          
+          checkWinner()
         });
       });
 
