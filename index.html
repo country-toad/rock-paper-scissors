@@ -11,8 +11,8 @@
     <button class="paper">Paper</button>
     <button class="scissors">Scissors</button>
     <div class="result"></div>
-    <div class="playerScore"></div>
-    <div class="computerScore"></div>
+    <div class="playerScore">0</div>
+    <div class="computerScore">0</div>
     <script>
       function computerPlay() {
         // Generates 0, 1, or 2 randomly
@@ -60,25 +60,15 @@
         result.textContent = string;
         if(string.includes("win")) {
           const playerScore = document.querySelector('.playerScore');
-          if(!playerScore.textContent) {
-            playerScore.textContent = 1;
-          }
-          else {
-            num = parseInt(playerScore.textContent);
-            num += 1;
-            playerScore.textContent = num;
-          }
+          num = parseInt(playerScore.textContent);
+          num += 1;
+          playerScore.textContent = num;
         }
         else if(string.includes("lose")) {
           const computerScore = document.querySelector('.computerScore');
-          if(!computerScore.textContent) {
-            computerScore.textContent = 1;
-          }
-          else {
-            num = parseInt(computerScore.textContent);
-            num += 1;
-            computerScore.textContent = num;
-          }
+          num = parseInt(computerScore.textContent);
+          num += 1;
+          computerScore.textContent = num;
         }
       }
 
