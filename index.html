@@ -78,9 +78,11 @@
         const computerScore = document.querySelector('.computerScore');
         if(playerScore.textContent === '5') {
           winnerResult.textContent = "Player wins!"
+          document.querySelectorAll('button').forEach(elem => { elem.disabled = true;});
         }
         if(computerScore.textContent === '5') {
           winnerResult.textContent = "Computer wins!"
+          document.querySelectorAll('button').forEach(elem => { elem.disabled = true;});
         }
       }
 
